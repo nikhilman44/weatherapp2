@@ -1,0 +1,178 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #00509e, #74c0fc);
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #00509e;
+}
+
+.error {
+  color: #ff4f4f;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  padding: 12px;
+  width: 60%;
+  border: 2px solid #00509e;
+  border-radius: 4px 0 0 4px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.search-bar button {
+  padding: 12px 16px;
+  background-color: #00509e;
+  color: #fff;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #003f7f;
+}
+
+.weather-card {
+  margin: 20px auto;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  background-color: #e6f7ff;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.weather-card h2 {
+  color: #00509e;
+  margin-bottom: 10px;
+}
+
+.weather-card p {
+  font-size: 1.2rem;
+  margin: 5px 0;
+  color: #333;
+}
+
+.weather-card img {
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
+}
+
+.favorites {
+  margin-top: 20px;
+}
+
+.favorites h3 {
+  font-size: 1.2rem;
+  color: #00509e;
+  margin-bottom: 10px;
+}
+
+.favorites button {
+  padding: 8px 12px;
+  margin: 5px;
+  background-color: #00509e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.favorites button:hover {
+  background-color: #003f7f;
+}
+
+.unit-toggle {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #00509e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.unit-toggle:hover {
+  background-color: #003f7f;
+}
+
+.save-favorite {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.save-favorite:hover {
+  background-color: #218838;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.unord-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.list-item {
+  background-color: #003f7f;
+  margin: 10px;
+  padding: 6px;
+  border-radius: 4px;
+  color: white;
+}
+
+.favorite-section {
+  background-color: #e6f7ff;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 7px;
+}
