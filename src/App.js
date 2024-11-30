@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import SearchBar from './Components/SearchBar'
 import {ThreeDots} from 'react-loader-spinner'
+import SearchBar from './Components/SearchBar'
 import CurrentWeather from './Components/CurrentWeather'
 import './App.css'
 
@@ -9,19 +9,20 @@ class App extends Component {
     currentWeather: null,
     error: '',
     unit: 'metric',
-    favoriteCountriesList: [],
+    favoriteCitiesList: [],
     isLoading: false,
   }
 
   componentDidMount() {
-    const storedCountries = localStorage.getItem('favouriteCountries')
+    const storedCities = localStorage.getItem('favoriteCities')
 
-    if (storedCountries) {
+    if (storedCities) {
       // Safely parse if there is valid data
-      this.setState({favoriteCountriesList: JSON.parse(storedCountries)})
+      console.log(storedCities)
+      this.setState({favoriteCitiesList: JSON.parse(storedCities)})
     } else {
       // No data found, keep the state as an empty array (default)
-      this.setState({favoriteCountriesList: []})
+      this.setState({favoriteCitiesList: []})
     }
   }
 
@@ -80,18 +81,15 @@ class App extends Component {
   }
 
   handleSaveFavorite = city => {
-    const {favoriteCountriesList} = this.state
-    if (!favoriteCountriesList.includes(city)) {
-      const updatedFavoriteCountriesList = [...favoriteCountriesList, city]
-      this.setState(
-        {favoriteCountriesList: updatedFavoriteCountriesList},
-        () => {
-          localStorage.setItem(
-            'favoriteCountries',
-            JSON.stringify(updatedFavoriteCountriesList),
-          )
-        },
-      )
+    const {favoriteCitiesList} = this.state
+    if (!favoriteCitiesList.includes(city)) {
+      const updatedFavoriteCitiesList = [...favoriteCitiesList, city]
+      this.setState({favoriteCitiesList: updatedFavoriteCitiesList}, () => {
+        localStorage.setItem(
+          'favoriteCities',
+          JSON.stringify(updatedFavoriteCitiesList),
+        )
+      })
     }
   }
 
@@ -100,8 +98,13 @@ class App extends Component {
   }
 
   render() {
-    const {currentWeather, error, favoriteCountriesList, unit, isLoading} =
-      this.state
+    const {
+      currentWeather,
+      error,
+      favoriteCitiesList,
+      unit,
+      isLoading,
+    } = this.state
 
     return (
       <div className="app">
@@ -121,11 +124,11 @@ class App extends Component {
             <button className="unit-toggle" onClick={this.handleUnitToggle}>
               {unit === 'metric' ? 'Switch to imperical' : 'Switch to metric'}
             </button>
-            {favoriteCountriesList.length > 0 ? (
-              <div className="favorite-section">
-                <h2>Favorite Countries</h2>
+            <div className="favorite-section">
+              <h2>Favorite Cities</h2>
+              {favoriteCitiesList.length > 0 ? (
                 <ul className="unord-list">
-                  {favoriteCountriesList.map(city => (
+                  {favoriteCitiesList.map(city => (
                     <li
                       className="list-item"
                       onClick={() => this.handleFavoriteClick(city)}
@@ -134,9 +137,10 @@ class App extends Component {
                     </li>
                   ))}
                 </ul>
-              </div>
-            ) : null}
-
+              ) : (
+                <p className="error">No favorite cities yet.</p>
+              )}
+            </div>
             {error && <p className="error">{error}</p>}
             {currentWeather && (
               <div>
